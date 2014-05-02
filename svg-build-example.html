@@ -1,0 +1,57 @@
+<html>
+<head>
+<script type="text/javascript">
+"use strict";
+
+var globalVariable = [4, 2, 5];
+
+function someFunction()
+{
+    var globalVariable = [2, 2, 2];
+    console.log(globalVariable);
+}
+
+function someOtherFunction()
+{
+    console.log(globalVariable);
+}
+
+function yetAnother()
+{
+    globalVariable.push(5);
+    console.log(globalVariable);
+}
+
+function initSVG()
+{
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    //var circle = document.createElement('circle');
+    var circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('cx', 50);
+    circle.setAttribute('cy', 50);
+    circle.setAttribute('r', 40);
+    circle.setAttribute('stroke', 'green');
+    circle.setAttribute('stroke-width', "4px");
+    circle.setAttribute('fill', 'yellow');
+    svg.appendChild(circle);
+    svg.setAttribute("width", 100);
+    svg.setAttribute("height", 100);
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    document.body.appendChild(svg);
+}
+
+function otherInitSvg()
+{
+    document.body.innerHTML = document.body.innerHTML + '<svg width="100" height="100"> \
+  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" /> \
+</svg>';
+}
+</script>
+</head>
+<body>
+Some body text.
+<!-- <svg width="100" height="100">
+  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+</svg> -->
+</body>
+</html>
