@@ -1,9 +1,11 @@
 "use strict";
-var string = '{"times":["2011-01-01 17:00","2011-01-01 18:00","2011-01-01 19:00","2011-01-01 20:00"],"values":[3, 4, 5, 2]}';
+var stringa = '["2011-01-01 17:00","2011-01-01 18:00","2011-01-01 19:00","2011-01-01 20:00"]';
+var stringb = '[3,4,5,2]';
 
-var data = JSON.parse(string);
-var times = data.times;
-var values = data.values;
+
+var times = JSON.parse(stringa);
+var vals = JSON.parse(stringb);
+
 
 function buildForms(div){
   var html = '<p>select an array, index, and create a value</p><select id="arr"><option value="0">times</option><option value="1">values</option></select><select id="index">';
@@ -21,7 +23,7 @@ function showData(div){
   var count = times.length;
   for (var i = 0; i < count; i++){
     time = times[i];
-    value = values[i];
+    value = vals[i];
     html = html + time + '] ' +  value + '<br />';
   }
   div.innerHTML = html + '</p>';
@@ -35,9 +37,23 @@ function updateData(){
     times[index] = value;
   }
   else{
-    values[index] = value;
+    vals[index] = value;
   }
 
 }
+
+document.addEventListener('keydown', function(event) {
+  var code = event.keyCode;
+  if(code == 83 && event.ctrlKey) {
+    console.log('Would  normally be saving!');
+    window.event.preventDefault();
+  }
+  else if(code == 39) {
+    console.log('Right was pressed');
+  }
+  else{
+    console.log('Key Code: ' + code);
+  }
+});
 
 
